@@ -58,7 +58,7 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
     private int notificationId;
     private Handler mainHandler;
 
-    private Boolean stopWithTask;
+    private boolean stopWithTask;
 
     synchronized public static PowerManager.WakeLock getLock(Context context) {
         if (lockStatic == null) {
