@@ -246,6 +246,7 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
 
     @Override
     public void onTaskRemoved(Intent rootIntent) {
+        Log.i(TAG, "backgroundService onTaskRemoved isManuallyStopped= " + isManuallyStopped);
         if (isManuallyStopped) {
             WatchdogReceiver.remove(this);
             stopSelf();
