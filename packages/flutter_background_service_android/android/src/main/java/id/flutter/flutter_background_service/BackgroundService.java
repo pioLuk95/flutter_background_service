@@ -304,10 +304,12 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
             }
 
             if (method.equalsIgnoreCase("stopService")) {
+                Log.i(TAG, "backgroundService stopService started");
                 isManuallyStopped = true;
                 WatchdogReceiver.remove(this);
                 stopSelf();
                 result.success(true);
+                Log.i(TAG, "backgroundService stopService ended");
                 return;
             }
 

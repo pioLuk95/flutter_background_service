@@ -1,2 +1,8 @@
 pubspec_overrides.yaml
 .dart_tool/**
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
