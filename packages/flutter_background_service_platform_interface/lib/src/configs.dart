@@ -48,6 +48,9 @@ class AndroidConfiguration {
   /// notification id will be used by foreground service
   final int foregroundServiceNotificationId;
 
+  /// whether service should stop when app is killed
+  final bool stopWithTask;
+
   AndroidConfiguration({
     required this.onStart,
     this.autoStart = true,
@@ -57,5 +60,6 @@ class AndroidConfiguration {
     this.initialNotificationTitle = 'Background Service',
     this.notificationChannelId,
     this.foregroundServiceNotificationId = 112233,
+    this.stopWithTask = false,
   });
 }

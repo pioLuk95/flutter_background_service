@@ -58,6 +58,8 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
     private int notificationId;
     private Handler mainHandler;
 
+    private Boolean stopWithTask;
+
     synchronized public static PowerManager.WakeLock getLock(Context context) {
         if (lockStatic == null) {
             PowerManager mgr = (PowerManager) context
@@ -100,6 +102,7 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
         notificationTitle = config.getInitialNotificationTitle();
         notificationContent = config.getInitialNotificationContent();
         notificationId = config.getForegroundNotificationId();
+        stopWithTask = config.getStopWithTask();
         updateNotificationInfo();
         onStartCommand(null, -1, -1);
     }
@@ -246,6 +249,12 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
 
     @Override
     public void onTaskRemoved(Intent rootIntent) {
+        if (stopWithTask) {
+            isManuallyStopped = true;
+            WatchdogReceiver.remove(this);
+            stopSelf();
+            return;
+        }
         if (isRunning.get()) {
             WatchdogReceiver.enqueue(getApplicationContext(), 1000);
         }

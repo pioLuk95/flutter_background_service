@@ -77,4 +77,12 @@ public class Config {
     public void setForegroundNotificationId(int value) {
         pref.edit().putInt("foreground_notification_id", value).apply();
     }
+
+    public Boolean getStopWithTask() {
+        return pref.getBoolean("stop_with_task", false);
+    }
+
+    public void setStopWithTask(Boolean value) {
+        pref.edit().putBoolean("stop_with_task", value).apply();
+    }
 }

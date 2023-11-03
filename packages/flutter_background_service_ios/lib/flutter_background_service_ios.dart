@@ -55,10 +55,6 @@ class FlutterBackgroundServiceIOS extends FlutterBackgroundServicePlatform {
     return true;
   }
 
-  Future<void> stopSelf() async {
-    await _channel.invokeMethod("stopService");
-  }
-
   Future<bool> start() async {
     final result = await _channel.invokeMethod('start');
     return result ?? false;

@@ -55,10 +55,6 @@ class FlutterBackgroundServiceAndroid extends FlutterBackgroundServicePlatform {
     }
   }
 
-  Future<void> stopSelf() async {
-    await _channel.invokeMethod("stopService");
-  }
-
   Future<bool> start() async {
     final result = await _channel.invokeMethod('start');
     return result ?? false;
@@ -108,6 +104,7 @@ class FlutterBackgroundServiceAndroid extends FlutterBackgroundServicePlatform {
         "notification_channel_id": androidConfiguration.notificationChannelId,
         "foreground_notification_id":
             androidConfiguration.foregroundServiceNotificationId,
+        "stop_with_task": androidConfiguration.stopWithTask,
       },
     );
 
