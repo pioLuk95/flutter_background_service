@@ -32,6 +32,9 @@ class FlutterBackgroundService implements Observable {
   /// Starts the background service.
   Future<bool> startService() => _platform.start();
 
+  /// Stops the background service.
+  Future<void> stopSelf() => _platform.stopSelf();
+
   /// Whether the service is running
   Future<bool> isRunning() => _platform.isServiceRunning();
 

@@ -39,6 +39,8 @@ abstract class FlutterBackgroundServicePlatform extends PlatformInterface
 
   Future<bool> start();
 
+  Future<void> stopSelf();
+
   Future<bool> isServiceRunning();
 }
 
